@@ -21,8 +21,6 @@
 ================  =====
 項目名             説明    
 ================  =====
-Window Width      GUIプログラムウィンドウの幅
-Window Height     GUIプログラムウィンドウの高さ
 FPS               GUIプログラムの表示用FPS
 ================  =====
 
@@ -46,6 +44,8 @@ Object Size Error Ratio                     車両矩形サイズに対する追
 Real Average Length In Meter                平均車両の実際の長さ（単位メートル）
 Real Average Width In Meter                 平均車両の実際の幅（単位メートル）
 Real Width Or Length Threshold In Degrees   速度計算において使用する実際の長さと幅の切り替え閾値（単位度）
+Measurement Error Ratio                     カルマンフィルターにおける予測誤差(P)に対する計測誤差(R)の割合
+Enable Line Detections                      検出された車両に対する直線検出有効化
 ==========================================  =====
 
 * Scene Understanding
@@ -65,7 +65,7 @@ Maximum Duration In Minutes For Stats       交通シーンの統計情報を保
 項目名                                       説明    
 ==========================================  =====
 Camera Angle                                カメラの見下ろし角（単位度）
-Ignore Default Flow                         計測結果の出力に、ユーザーが名前をつけた車線以外の追跡車両を含めないかどうか
+Ignore Default Flow                         計測結果出力default車線出力無効化
 ==========================================  =====
 
 * Scene Model
@@ -74,6 +74,7 @@ Ignore Default Flow                         計測結果の出力に、ユーザ
 項目名                                       説明    
 ==========================================  =====
 CSV Interval In Minutes                     CSV出力のインターバル（単位分）
+Reset SceneTime Every Hour                  内部カウンターを１時間毎にリセット有効化
 ==========================================  =====
 
 * Camera Reader
@@ -212,11 +213,11 @@ GUIプログラム
     .. image:: images/chapter2/2-dasr.png
        :align: center
 
-* Tracking/Object Size Error Ratio 
+* Tracking/Object Size Error Ratio, Measurement Error Ratio
 
 予測誤差と観測誤差の両方から生じる予測とのズレを、どの程度織り込むかを、その時の車両のサイズの比率で指定します。
 
-技術的には、X方向、Y方向それぞれについて、その時の車両のサイズにこの設定値をかけたものの1/3を標準偏差σとして、以下のパラメーターでカルマンフィルターによる追跡を行います。なお、d=0.1、c=0.5で現在のところ固定されています。刻々と変動する車両の大きさに対応するため、この標準偏差も刻々とアップデートされています。
+技術的には、X方向、Y方向それぞれについて、その時の車両のサイズにこの設定値をかけたものの1/3を標準偏差σとして、以下のパラメーターでカルマンフィルターによる追跡を行います。なお、d=0.1で現在のところ固定されていますが、cはMeasurement Error Ratioで任意の値に設定することができます。刻々と変動する車両の大きさに対応するため、この標準偏差も刻々とアップデートされています。
 
     * x
 
@@ -324,3 +325,7 @@ defaultの車線の車両の計測を結果に含めるかどうかの設定で�
 * SceneModel/CSV Interval In Minutes
 
 CSVファイルを出力する間隔の設定値で、単位は分です。デフォルトでは10分間隔で出力します。
+
+* SceneModel/Reset SceneTime Every Hour
+
+内部のカウンター（映像フレーム番号）を毎時でリセットするかどうかの設定です。デフォルトでは有効です。映像による解析の場合で、解析対象の映像が１時間を超え、かつ映像フレーム番号を通し番号で取得したい場合は無効にしてください。
