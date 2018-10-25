@@ -19,14 +19,14 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Traffic Counter'
+project = 'Smatra'
 copyright = '2018, Cloudian K.K.'
 author = 'Takenori Sato'
 
 # The short X.Y version
 version = '1.0 Beta'
 # The full version, including alpha/beta/rc tags
-release = '1.0.0b0'
+release = '1.0.0b8'
 
 
 # -- General configuration ---------------------------------------------------
@@ -101,7 +101,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'TrafficCounterdoc'
+htmlhelp_basename = 'smatradoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -128,7 +128,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'TrafficCounter.tex', 'Traffic Counter Documentation',
+    (master_doc, 'Smatra.tex', 'Smatra Documentation',
      'Takenori Sato', 'manual'),
 ]
 
@@ -138,7 +138,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'trafficcounter', 'Traffic Counter Documentation',
+    (master_doc, 'smatra', 'Smatra Documentation',
      [author], 1)
 ]
 
@@ -149,7 +149,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'TrafficCounter', 'Traffic Counter Documentation',
-     author, 'TrafficCounter', 'One line description of project.',
+    (master_doc, 'Smatra', 'Smatra Documentation',
+     author, 'Smatra', 'One line description of project.',
      'Miscellaneous'),
 ]

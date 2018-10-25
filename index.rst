@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-クラウディアン交通量計測システムマニュアル
-===========================================
+クラウディアン交通量計測システム「スマトラ」ユーザーマニュアル
+==================================================================
 
 .. toctree::
    :maxdepth: 3
