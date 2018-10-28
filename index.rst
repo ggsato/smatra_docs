@@ -12,3 +12,4 @@
 
    overview
    settings
+   support
